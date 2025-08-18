@@ -1,0 +1,106 @@
+import React from 'react';
+import { MapPin, Wind, Droplets, Eye, Gauge } from 'lucide-react';
+import WeatherIcon from './WeatherIcon';
+import { useWeather } from '@/contexts/WeatherContext';
+import { useSettings } from '@/contexts/SettingsContext';
+
+const CurrentWeather: React.FC = () => {
+  const { state } = useWeather();
+  const { convertTemperature, getTemperatureSymbol } = useSettings();
+
+  if (!state.currentWeather) {
+    return (
+      <div className="glass rounded-2xl p-8 animate-pulse">
+        <div className="space-y-4">
+          <div className="h-4 bg-white/20 rounded w-1/3"></div>
+          <div className="h-16 bg-white/20 rounded w-1/2"></div>
+          <div className="h-4 bg-white/20 rounded w-2/3"></div>
+        </div>
+      </div>
+    );
+  }
+
+  const weather = state.currentWeather;
+
+  return (
+    <div className="glass glass-hover rounded-2xl p-8 space-y-6 animate-slide-in">
+      {/* Location */}
+      <div className="flex items-center gap-2 text-text-muted">
+        <MapPin className="h-4 w-4" />
+        <span className="text-sm font-medium">
+          {weather.location}, {weather.country}
+        </span>
+      </div>
+
+      {/* Main Temperature */}
+      <div className="flex items-center justify-between">
+        <div>
+          <div className="text-6xl font-bold text-glow animate-glow">
+            {convertTemperature(weather.temperature)}{getTemperatureSymbol()}
+          </div>
+          <div className="text-text-muted text-sm mt-1">
+            Feels like {convertTemperature(weather.feelsLike)}{getTemperatureSymbol()}
+          </div>
+        </div>
+        
+        <div className="text-right">
+          <WeatherIcon 
+            iconCode={weather.icon} 
+            size="xl" 
+            animated 
+          />
+          <div className="text-text-muted text-sm mt-2 capitalize">
+            {weather.description}
+          </div>
+        </div>
+      </div>
+
+      {/* High/Low Temperatures */}
+      <div className="flex justify-between text-sm">
+        <span className="text-text-muted">
+          H: {convertTemperature(weather.highTemp)}{getTemperatureSymbol()}
+        </span>
+        <span className="text-text-muted">
+          L: {convertTemperature(weather.lowTemp)}{getTemperatureSymbol()}
+        </span>
+      </div>
+
+      {/* Weather Details Grid */}
+      <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/10">
+        <div className="flex items-center gap-3">
+          <Wind className="h-4 w-4 text-primary" />
+          <div>
+            <div className="text-sm text-text-muted">Wind</div>
+            <div className="text-sm font-medium">{weather.windSpeed} m/s</div>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <Droplets className="h-4 w-4 text-primary" />
+          <div>
+            <div className="text-sm text-text-muted">Humidity</div>
+            <div className="text-sm font-medium">{weather.humidity}%</div>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <Eye className="h-4 w-4 text-primary" />
+          <div>
+            <div className="text-sm text-text-muted">Visibility</div>
+            <div className="text-sm font-medium">{weather.visibility} km</div>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <Gauge className="h-4 w-4 text-primary" />
+          <div>
+            <div className="text-sm text-text-muted">Pressure</div>
+            <div className="text-sm font-medium">{weather.pressure} hPa</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CurrentWeather;
