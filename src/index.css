@@ -2,35 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Weather App Design System - Modern Glassmorphism Theme */
+/* Weather App Design System - Premium Glassmorphism Theme */
 
 @layer base {
   :root {
-    /* Background gradients */
-    --background-primary: 220 25% 8%;
-    --background-secondary: 240 30% 12%;
-    --background-accent: 260 35% 16%;
+    /* Elegant background gradients */
+    --background-primary: 235 39% 6%;
+    --background-secondary: 240 45% 9%;
+    --background-accent: 250 50% 12%;
     
-    /* Text colors */
+    /* Sophisticated text colors */
     --foreground: 210 20% 98%;
-    --foreground-muted: 210 15% 75%;
-    --foreground-subtle: 210 10% 55%;
+    --foreground-muted: 220 14% 78%;
+    --foreground-subtle: 220 12% 62%;
 
-    /* Glass effect cards */
-    --glass: 220 25% 15%;
-    --glass-border: 210 20% 25%;
+    /* Premium glass effect */
+    --glass: 220 30% 12%;
+    --glass-border: 220 25% 28%;
     --glass-foreground: 210 20% 98%;
 
-    /* Weather accent colors */
-    --weather-sunny: 45 95% 60%;
-    --weather-rainy: 220 70% 65%;
-    --weather-cloudy: 210 15% 70%;
-    --weather-snowy: 200 20% 85%;
+    /* Vibrant weather colors */
+    --weather-sunny: 43 96% 56%;
+    --weather-rainy: 217 91% 60%;
+    --weather-cloudy: 215 25% 65%;
+    --weather-snowy: 195 23% 80%;
     
-    /* Primary brand colors */
-    --primary: 220 70% 65%;
+    /* Stunning primary brand */
+    --primary: 217 91% 60%;
     --primary-foreground: 210 20% 98%;
-    --primary-glow: 220 70% 75%;
+    --primary-glow: 217 91% 70%;
 
     /* Secondary colors */
     --secondary: 240 15% 20%;
@@ -49,15 +49,18 @@
 
     --radius: 0.75rem;
 
-    /* Custom gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(220, 25%, 8%) 0%, hsl(240, 30%, 12%) 50%, hsl(260, 35%, 16%) 100%);
-    --gradient-glass: linear-gradient(135deg, hsl(220, 25%, 15% / 0.3) 0%, hsl(220, 25%, 15% / 0.1) 100%);
-    --gradient-weather: linear-gradient(135deg, hsl(220, 70%, 65% / 0.2) 0%, hsl(240, 60%, 70% / 0.1) 100%);
+    /* Stunning gradient system */
+    --gradient-primary: linear-gradient(135deg, hsl(235, 39%, 6%) 0%, hsl(240, 45%, 9%) 30%, hsl(250, 50%, 12%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(220, 30%, 12% / 0.4) 0%, hsl(220, 30%, 12% / 0.1) 100%);
+    --gradient-weather: linear-gradient(135deg, hsl(217, 91%, 60% / 0.15) 0%, hsl(240, 70%, 65% / 0.05) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(220, 30%, 12% / 0.6) 0%, hsl(220, 30%, 15% / 0.2) 100%);
+    --gradient-border: linear-gradient(135deg, hsl(220, 25%, 28% / 0.5) 0%, hsl(220, 25%, 28% / 0.1) 100%);
     
-    /* Shadows and glows */
-    --shadow-glass: 0 8px 32px hsl(220, 25%, 5% / 0.3);
-    --shadow-glow: 0 0 20px hsl(220, 70%, 65% / 0.2);
-    --shadow-elevated: 0 20px 40px hsl(220, 25%, 3% / 0.4);
+    /* Premium shadows and effects */
+    --shadow-glass: 0 12px 40px hsl(220, 39%, 3% / 0.4);
+    --shadow-glow: 0 0 30px hsl(217, 91%, 60% / 0.3);
+    --shadow-elevated: 0 25px 50px hsl(220, 39%, 2% / 0.5);
+    --shadow-subtle: 0 4px 16px hsl(220, 39%, 3% / 0.2);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -135,26 +138,83 @@
 
 @layer components {
   .glass {
-    background: var(--gradient-glass);
-    backdrop-filter: blur(20px);
-    border: 1px solid hsl(var(--glass-border) / 0.2);
+    background: var(--gradient-card);
+    backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid;
+    border-image: var(--gradient-border) 1;
+    border-radius: var(--radius);
     box-shadow: var(--shadow-glass);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .glass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.3), transparent);
+    opacity: 0.6;
   }
   
   .glass-hover {
     transition: var(--transition-smooth);
+    transform: translateY(0);
   }
   
   .glass-hover:hover {
-    background: linear-gradient(135deg, hsl(220, 25%, 18% / 0.4) 0%, hsl(220, 25%, 18% / 0.2) 100%);
+    background: linear-gradient(135deg, hsl(220, 30%, 15% / 0.7) 0%, hsl(220, 30%, 18% / 0.3) 100%);
     box-shadow: var(--shadow-elevated);
+    transform: translateY(-2px);
+    border-color: hsl(var(--primary) / 0.4);
   }
 
   .glow {
     box-shadow: var(--shadow-glow);
+    position: relative;
   }
 
   .text-glow {
-    text-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.6);
+    background: linear-gradient(135deg, hsl(var(--foreground)), hsl(var(--primary-glow)));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .weather-card {
+    @apply glass glass-hover rounded-2xl p-6;
+    background: var(--gradient-card);
+    border: 1px solid hsl(var(--glass-border) / 0.3);
+  }
+
+  .premium-button {
+    @apply relative overflow-hidden;
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-glow)) 100%);
+    border: 1px solid hsl(var(--primary) / 0.4);
+    box-shadow: 0 4px 16px hsl(var(--primary) / 0.2);
+    transition: var(--transition-smooth);
+  }
+
+  .premium-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary-foreground) / 0.1), transparent);
+    transition: left 0.5s;
+  }
+
+  .premium-button:hover::before {
+    left: 100%;
+  }
+
+  .premium-button:hover {
+    box-shadow: 0 8px 24px hsl(var(--primary) / 0.4);
+    transform: translateY(-1px);
   }
 }
