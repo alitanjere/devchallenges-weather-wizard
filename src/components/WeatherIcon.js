@@ -11,13 +11,7 @@ import {
   CloudFog
 } from 'lucide-react';
 
-interface WeatherIconProps {
-  iconCode: string;
-  size?: 'sm' | 'md' | 'lg' | 'xl';
-  animated?: boolean;
-}
-
-const WeatherIcon: React.FC<WeatherIconProps> = ({ 
+const WeatherIcon = ({
   iconCode, 
   size = 'md', 
   animated = false 

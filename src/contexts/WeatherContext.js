@@ -1,58 +1,7 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
 import axios from 'axios';
 
-export interface WeatherData {
-  location: string;
-  country: string;
-  temperature: number;
-  feelsLike: number;
-  description: string;
-  icon: string;
-  humidity: number;
-  windSpeed: number;
-  windDirection: number;
-  pressure: number;
-  visibility: number;
-  uvIndex: number;
-  timestamp: number;
-  highTemp: number;
-  lowTemp: number;
-}
-
-export interface HourlyForecast {
-  time: string;
-  temperature: number;
-  icon: string;
-  description: string;
-}
-
-export interface DailyForecast {
-  date: string;
-  day: string;
-  highTemp: number;
-  lowTemp: number;
-  icon: string;
-  description: string;
-}
-
-export interface WeatherState {
-  currentWeather: WeatherData | null;
-  hourlyForecast: HourlyForecast[];
-  dailyForecast: DailyForecast[];
-  loading: boolean;
-  error: string | null;
-  lastUpdated: number | null;
-}
-
-type WeatherAction =
-  | { type: 'SET_LOADING'; payload: boolean }
-  | { type: 'SET_CURRENT_WEATHER'; payload: WeatherData }
-  | { type: 'SET_HOURLY_FORECAST'; payload: HourlyForecast[] }
-  | { type: 'SET_DAILY_FORECAST'; payload: DailyForecast[] }
-  | { type: 'SET_ERROR'; payload: string }
-  | { type: 'CLEAR_ERROR' };
-
-const initialState: WeatherState = {
+const initialState = {
   currentWeather: null,
   hourlyForecast: [],
   dailyForecast: [],
@@ -61,7 +10,7 @@ const initialState: WeatherState = {
   lastUpdated: null,
 };
 
-const weatherReducer = (state: WeatherState, action: WeatherAction): WeatherState => {
+const weatherReducer = (state, action) => {
   switch (action.type) {
     case 'SET_LOADING':
       return { ...state, loading: action.payload };
@@ -85,22 +34,15 @@ const weatherReducer = (state: WeatherState, action: WeatherAction): WeatherStat
   }
 };
 
-interface WeatherContextType {
-  state: WeatherState;
-  fetchWeatherByCity: (city: string) => Promise<void>;
-  fetchWeatherByCoords: (lat: number, lon: number) => Promise<void>;
-  clearError: () => void;
-}
-
-const WeatherContext = createContext<WeatherContextType | undefined>(undefined);
+const WeatherContext = createContext(undefined);
 
 const API_KEY = '43f53748106c3ae1357cdf647fd41a33';
 const BASE_URL = 'https://api.openweathermap.org/data/2.5';
 
-export const WeatherProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const WeatherProvider = ({ children }) => {
   const [state, dispatch] = useReducer(weatherReducer, initialState);
 
-  const fetchWeatherByCity = async (city: string) => {
+  const fetchWeatherByCity = async (city) => {
     try {
       dispatch({ type: 'SET_LOADING', payload: true });
       dispatch({ type: 'CLEAR_ERROR' });
@@ -112,7 +54,7 @@ export const WeatherProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
       const current = currentResponse.data;
       
-      const weatherData: WeatherData = {
+      const weatherData = {
         location: current.name,
         country: current.sys.country,
         temperature: Math.round(current.main.temp),
@@ -140,7 +82,7 @@ export const WeatherProvider: React.FC<{ children: React.ReactNode }> = ({ child
       const forecast = forecastResponse.data;
       
       // Process hourly forecast (next 24 hours)
-      const hourlyData: HourlyForecast[] = forecast.list.slice(0, 8).map((item: any) => ({
+      const hourlyData = forecast.list.slice(0, 8).map((item) => ({
         time: new Date(item.dt * 1000).toLocaleTimeString('en-US', { 
           hour: 'numeric', 
           hour12: true 
@@ -153,10 +95,10 @@ export const WeatherProvider: React.FC<{ children: React.ReactNode }> = ({ child
       dispatch({ type: 'SET_HOURLY_FORECAST', payload: hourlyData });
 
       // Process daily forecast (5 days)
-      const dailyData: DailyForecast[] = [];
-      const groupedByDate: { [key: string]: any[] } = {};
+      const dailyData = [];
+      const groupedByDate = {};
 
-      forecast.list.forEach((item: any) => {
+      forecast.list.forEach((item) => {
         const date = new Date(item.dt * 1000).toDateString();
         if (!groupedByDate[date]) {
           groupedByDate[date] = [];
@@ -182,7 +124,7 @@ export const WeatherProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
       dispatch({ type: 'SET_DAILY_FORECAST', payload: dailyData.slice(0, 5) });
 
-    } catch (error: any) {
+    } catch (error) {
       dispatch({ 
         type: 'SET_ERROR', 
         payload: error.response?.data?.message || 'Failed to fetch weather data' 
@@ -192,7 +134,7 @@ export const WeatherProvider: React.FC<{ children: React.ReactNode }> = ({ child
     }
   };
 
-  const fetchWeatherByCoords = async (lat: number, lon: number) => {
+  const fetchWeatherByCoords = async (lat, lon) => {
     try {
       dispatch({ type: 'SET_LOADING', payload: true });
       dispatch({ type: 'CLEAR_ERROR' });
@@ -203,7 +145,7 @@ export const WeatherProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
       const current = currentResponse.data;
       
-      const weatherData: WeatherData = {
+      const weatherData = {
         location: current.name,
         country: current.sys.country,
         temperature: Math.round(current.main.temp),
@@ -231,7 +173,7 @@ export const WeatherProvider: React.FC<{ children: React.ReactNode }> = ({ child
       const forecast = forecastResponse.data;
       
       // Process hourly and daily as above
-      const hourlyData: HourlyForecast[] = forecast.list.slice(0, 8).map((item: any) => ({
+      const hourlyData = forecast.list.slice(0, 8).map((item) => ({
         time: new Date(item.dt * 1000).toLocaleTimeString('en-US', { 
           hour: 'numeric', 
           hour12: true 
@@ -243,10 +185,10 @@ export const WeatherProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
       dispatch({ type: 'SET_HOURLY_FORECAST', payload: hourlyData });
 
-      const dailyData: DailyForecast[] = [];
-      const groupedByDate: { [key: string]: any[] } = {};
+      const dailyData = [];
+      const groupedByDate = {};
 
-      forecast.list.forEach((item: any) => {
+      forecast.list.forEach((item) => {
         const date = new Date(item.dt * 1000).toDateString();
         if (!groupedByDate[date]) {
           groupedByDate[date] = [];
@@ -272,7 +214,7 @@ export const WeatherProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
       dispatch({ type: 'SET_DAILY_FORECAST', payload: dailyData.slice(0, 5) });
 
-    } catch (error: any) {
+    } catch (error) {
       dispatch({ 
         type: 'SET_ERROR', 
         payload: error.response?.data?.message || 'Failed to fetch weather data' 

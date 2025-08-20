@@ -5,13 +5,7 @@ import { useWeather } from '@/contexts/WeatherContext';
 import { useSettings } from '@/contexts/SettingsContext';
 import axios from 'axios';
 
-interface CityWeather {
-  name: string;
-  country: string;
-  temperature: number;
-  icon: string;
-  description: string;
-}
+// Simple city weather object
 
 const POPULAR_CITIES = [
   'New York',
@@ -21,8 +15,8 @@ const POPULAR_CITIES = [
   'Sydney'
 ];
 
-const PopularCities: React.FC = () => {
-  const [cities, setCities] = useState<CityWeather[]>([]);
+const PopularCities = () => {
+  const [cities, setCities] = useState([]);
   const [loading, setLoading] = useState(true);
   const { fetchWeatherByCity } = useWeather();
   const { convertTemperature, getTemperatureSymbol } = useSettings();
@@ -55,7 +49,7 @@ const PopularCities: React.FC = () => {
     fetchCitiesWeather();
   }, []);
 
-  const handleCityClick = (cityName: string) => {
+  const handleCityClick = (cityName) => {
     fetchWeatherByCity(cityName);
   };
 

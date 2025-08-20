@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { useWeather } from '@/contexts/WeatherContext';
 import { toast } from 'sonner';
 
-const SearchBar: React.FC = () => {
+const SearchBar = () => {
   const [searchValue, setSearchValue] = useState('');
   const { fetchWeatherByCity, fetchWeatherByCoords, state } = useWeather();
 

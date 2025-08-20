@@ -4,7 +4,7 @@ import WeatherIcon from './WeatherIcon';
 import { useWeather } from '@/contexts/WeatherContext';
 import { useSettings } from '@/contexts/SettingsContext';
 
-const HourlyForecast: React.FC = () => {
+const HourlyForecast = () => {
   const { state } = useWeather();
   const { convertTemperature, getTemperatureSymbol } = useSettings();
 

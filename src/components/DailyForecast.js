@@ -3,7 +3,7 @@ import WeatherIcon from './WeatherIcon';
 import { useWeather } from '@/contexts/WeatherContext';
 import { useSettings } from '@/contexts/SettingsContext';
 
-const DailyForecast: React.FC = () => {
+const DailyForecast = () => {
   const { state } = useWeather();
   const { convertTemperature, getTemperatureSymbol } = useSettings();
 

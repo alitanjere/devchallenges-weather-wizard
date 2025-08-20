@@ -1,16 +1,9 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-interface SettingsContextType {
-  temperatureUnit: 'celsius' | 'fahrenheit';
-  toggleTemperatureUnit: () => void;
-  convertTemperature: (temp: number) => number;
-  getTemperatureSymbol: () => string;
-}
+const SettingsContext = createContext(undefined);
 
-const SettingsContext = createContext<SettingsContextType | undefined>(undefined);
-
-export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [temperatureUnit, setTemperatureUnit] = useState<'celsius' | 'fahrenheit'>('celsius');
+export const SettingsProvider = ({ children }) => {
+  const [temperatureUnit, setTemperatureUnit] = useState('celsius');
 
   // Load saved preference from localStorage
   useEffect(() => {
@@ -29,14 +22,14 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     setTemperatureUnit(prev => prev === 'celsius' ? 'fahrenheit' : 'celsius');
   };
 
-  const convertTemperature = (temp: number): number => {
+  const convertTemperature = (temp) => {
     if (temperatureUnit === 'fahrenheit') {
       return Math.round((temp * 9/5) + 32);
     }
     return temp; // Already in Celsius from API
   };
 
-  const getTemperatureSymbol = (): string => {
+  const getTemperatureSymbol = () => {
     return temperatureUnit === 'celsius' ? '°C' : '°F';
   };
 
