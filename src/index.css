@@ -2,69 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Basic Weather App - Amateur Design */
+/* Super Basic Weather App */
 
 @layer base {
   :root {
-    /* Simple background colors */
-    --background-primary: 0 0% 95%;
-    --background-secondary: 0 0% 90%;
-    --background-accent: 0 0% 85%;
+    /* Simple colors */
+    --background-primary: 0 0% 98%;
+    --background-secondary: 0 0% 95%;
+    --background-accent: 0 0% 90%;
     
-    /* Basic text colors */
-    --foreground: 0 0% 20%;
-    --foreground-muted: 0 0% 40%;
-    --foreground-subtle: 0 0% 60%;
+    /* Text colors */
+    --foreground: 0 0% 10%;
+    --foreground-muted: 0 0% 50%;
+    --foreground-subtle: 0 0% 70%;
 
-    /* Simple card effect */
+    /* Card colors */
     --glass: 0 0% 100%;
-    --glass-border: 0 0% 80%;
-    --glass-foreground: 0 0% 20%;
+    --glass-border: 0 0% 70%;
+    --glass-foreground: 0 0% 10%;
 
-    /* Basic weather colors */
-    --weather-sunny: 45 100% 50%;
-    --weather-rainy: 210 100% 50%;
-    --weather-cloudy: 0 0% 70%;
-    --weather-snowy: 200 100% 90%;
+    /* Weather colors */
+    --weather-sunny: 60 100% 50%;
+    --weather-rainy: 220 100% 50%;
+    --weather-cloudy: 0 0% 60%;
+    --weather-snowy: 210 100% 90%;
     
-    /* Simple primary color */
-    --primary: 200 100% 50%;
+    /* Primary color */
+    --primary: 220 100% 50%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 200 100% 60%;
+    --primary-glow: 220 100% 60%;
 
-    /* Secondary colors */
-    --secondary: 0 0% 70%;
-    --secondary-foreground: 0 0% 20%;
+    /* Secondary */
+    --secondary: 0 0% 80%;
+    --secondary-foreground: 0 0% 10%;
 
-    /* Simple states */
-    --hover: 0 0% 85%;
-    --active: 0 0% 80%;
+    /* States */
+    --hover: 0 0% 90%;
+    --active: 0 0% 85%;
     
-    /* System colors */
-    --border: 0 0% 80%;
+    /* System */
+    --border: 0 0% 70%;
     --input: 0 0% 100%;
-    --ring: 200 100% 50%;
+    --ring: 220 100% 50%;
     --destructive: 0 100% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --radius: 4px;
+    --radius: 0px;
 
-    /* No gradients */
-    --gradient-primary: hsl(0, 0%, 95%);
+    /* No fancy stuff */
+    --gradient-primary: hsl(0, 0%, 98%);
     --gradient-glass: hsl(0, 0%, 100%);
-    --gradient-weather: hsl(0, 0%, 98%);
+    --gradient-weather: hsl(0, 0%, 100%);
     --gradient-card: hsl(0, 0%, 100%);
-    --gradient-border: hsl(0, 0%, 80%);
+    --gradient-border: hsl(0, 0%, 70%);
     
     /* Basic shadows */
-    --shadow-glass: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-glass: 0 1px 3px rgba(0, 0, 0, 0.1);
     --shadow-glow: none;
-    --shadow-elevated: 0 4px 8px rgba(0, 0, 0, 0.2);
-    --shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.1);
+    --shadow-elevated: 0 2px 5px rgba(0, 0, 0, 0.15);
+    --shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.05);
 
     /* Simple transitions */
-    --transition-smooth: all 0.2s ease;
-    --transition-bounce: all 0.2s ease;
+    --transition-smooth: none;
+    --transition-bounce: none;
 
     --sidebar-background: 0 0% 98%;
 
@@ -137,48 +137,48 @@
 
 @layer components {
   .glass {
-    background: var(--gradient-card);
-    border: 2px solid var(--glass-border);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-glass);
-    padding: 16px;
+    background: white;
+    border: 3px solid gray;
+    padding: 15px;
+    margin: 10px;
   }
   
   .glass-hover {
-    transition: var(--transition-smooth);
+    /* no effects */
   }
   
   .glass-hover:hover {
-    background: var(--hover);
-    box-shadow: var(--shadow-elevated);
+    background: lightgray;
   }
 
   .glow {
-    box-shadow: var(--shadow-glow);
+    /* no glow */
   }
 
   .text-glow {
-    color: var(--foreground);
+    color: black;
     font-weight: bold;
+    font-size: 20px;
   }
 
   .weather-card {
-    @apply glass p-4 rounded border-2;
-    background: var(--gradient-card);
-    border-color: var(--glass-border);
+    background: white;
+    border: 3px solid gray;
+    padding: 15px;
+    margin: 10px;
   }
 
   .premium-button {
-    background: var(--primary);
-    border: 2px solid var(--primary);
-    color: var(--primary-foreground);
+    background: blue;
+    border: 3px solid blue;
+    color: white;
     font-weight: bold;
     text-transform: uppercase;
-    transition: var(--transition-smooth);
+    padding: 10px 15px;
   }
 
   .premium-button:hover {
-    background: var(--primary-glow);
-    border-color: var(--primary-glow);
+    background: darkblue;
+    border-color: darkblue;
   }
 }

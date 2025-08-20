@@ -41,10 +41,10 @@ const Index = () => {
 
         {/* Error Alert */}
         {state.error && (
-          <Alert className="mb-8 weather-card border-red-400/40 bg-red-500/10 text-red-200 animate-slide-in">
-            <AlertCircle className="h-5 w-5 text-red-400" />
-            <AlertDescription className="text-red-100 font-medium">{state.error}</AlertDescription>
-          </Alert>
+        <Alert className="mb-8 weather-card border-4 border-red-500 bg-red-100 text-red-800">
+          <AlertCircle className="h-5 w-5 text-red-500" />
+          <AlertDescription className="text-red-800 font-bold">{state.error}</AlertDescription>
+        </Alert>
         )}
 
         {/* Loading Spinner */}
@@ -62,20 +62,20 @@ const Index = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Left Column - Main Weather */}
             <div className="lg:col-span-2 space-y-8">
-              <div className="animate-slide-in">
+              <div>
                 <CurrentWeather />
               </div>
-              <div className="animate-slide-in" style={{ animationDelay: '0.1s' }}>
+              <div>
                 <HourlyForecast />
               </div>
-              <div className="animate-slide-in" style={{ animationDelay: '0.2s' }}>
+              <div>
                 <DailyForecast />
               </div>
             </div>
 
             {/* Right Column - Popular Cities */}
             <div className="space-y-8">
-              <div className="animate-slide-in" style={{ animationDelay: '0.3s' }}>
+              <div>
                 <PopularCities />
               </div>
             </div>
