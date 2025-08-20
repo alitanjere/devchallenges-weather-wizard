@@ -25,11 +25,11 @@ const Index = () => {
         {/* Header */}
         <header className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
           <div className="text-center sm:text-left">
-            <h1 className="text-3xl md:text-4xl font-bold text-glow">
-              Weather App
+            <h1 className="text-glow">
+              Aplicación del Tiempo
             </h1>
-            <p className="text-text-muted mt-1">
-              Current weather conditions and forecasts
+            <p style={{color: 'gray', fontSize: '12px'}}>
+              Condiciones del clima actuales y pronósticos
             </p>
           </div>
           
@@ -49,10 +49,9 @@ const Index = () => {
 
         {/* Loading Spinner */}
         {state.loading && !state.currentWeather && (
-          <div className="flex items-center justify-center min-h-[400px]">
-            <div className="text-center">
-              <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4 text-primary" />
-              <p className="text-text-muted">Loading weather data...</p>
+          <div style={{textAlign: 'center', padding: '50px'}}>
+            <div>
+              <p style={{fontSize: '18px', fontWeight: 'bold'}}>Cargando...</p>
             </div>
           </div>
         )}
@@ -83,9 +82,9 @@ const Index = () => {
         ) : null}
 
         {/* Footer */}
-        <footer className="mt-12 text-center text-text-subtle text-sm">
-          <p>Weather data provided by OpenWeatherMap</p>
-          <p className="mt-1">© 2024 Weather App - Built with React</p>
+        <footer style={{textAlign: 'center', color: 'gray', fontSize: '10px', marginTop: '30px'}}>
+          <p>Datos del clima por OpenWeatherMap</p>
+          <p>© 2024 App del Tiempo - Hecho con React</p>
         </footer>
       </div>
     </div>

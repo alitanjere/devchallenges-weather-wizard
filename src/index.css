@@ -128,57 +128,61 @@
   }
 
   body {
-    @apply bg-background text-foreground;
-    background: var(--gradient-primary);
+    background: #f0f0f0;
+    color: black;
     min-height: 100vh;
-    font-family: Arial, sans-serif;
+    font-family: Arial;
+    font-size: 14px;
   }
 }
 
 @layer components {
   .glass {
     background: white;
-    border: 3px solid gray;
-    padding: 15px;
-    margin: 10px;
+    border: 2px solid black;
+    padding: 20px;
+    margin: 5px;
+    text-align: center;
   }
   
   .glass-hover {
-    /* no effects */
+    /* nada */
   }
   
   .glass-hover:hover {
-    background: lightgray;
+    background: #dddddd;
   }
 
   .glow {
-    /* no glow */
+    /* sin brillo */
   }
 
   .text-glow {
     color: black;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 24px;
+    text-align: center;
   }
 
   .weather-card {
     background: white;
-    border: 3px solid gray;
-    padding: 15px;
-    margin: 10px;
+    border: 2px solid black;
+    padding: 20px;
+    margin: 5px;
+    text-align: center;
+    width: 100%;
   }
 
   .premium-button {
-    background: blue;
-    border: 3px solid blue;
+    background: #0066cc;
+    border: 2px solid black;
     color: white;
     font-weight: bold;
-    text-transform: uppercase;
-    padding: 10px 15px;
+    padding: 8px 12px;
+    cursor: pointer;
   }
 
   .premium-button:hover {
-    background: darkblue;
-    border-color: darkblue;
+    background: #004499;
   }
 }
