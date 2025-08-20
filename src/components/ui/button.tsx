@@ -5,26 +5,26 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-1 whitespace-nowrap rounded text-sm font-bold transition-all duration-200 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "premium-button text-primary-foreground",
+        default: "premium-button text-primary-foreground border-2",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-lg hover:shadow-xl",
+          "bg-destructive text-destructive-foreground hover:bg-red-600 border-2 border-destructive",
         outline:
-          "border border-glass-border bg-glass/30 text-foreground hover:bg-glass/50 hover:border-primary/40 backdrop-blur-sm",
+          "border-2 border-glass-border bg-white text-foreground hover:bg-gray-100",
         secondary:
-          "bg-secondary/80 text-secondary-foreground hover:bg-secondary backdrop-blur-sm shadow-lg hover:shadow-xl",
-        ghost: "text-foreground hover:bg-glass/30 hover:text-primary backdrop-blur-sm",
-        link: "text-primary underline-offset-4 hover:underline hover:text-primary-glow",
-        glass: "glass text-foreground hover:text-primary border-glass-border/50",
-        premium: "premium-button text-primary-foreground font-semibold",
+          "bg-secondary text-secondary-foreground hover:bg-gray-400 border-2 border-secondary",
+        ghost: "text-foreground hover:bg-gray-200 border-2 border-transparent",
+        link: "text-primary underline hover:text-blue-600",
+        glass: "glass text-foreground hover:text-primary",
+        premium: "premium-button text-primary-foreground",
       },
       size: {
         default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
+        sm: "h-8 px-3 py-1",
+        lg: "h-12 px-6 py-3",
         icon: "h-10 w-10",
       },
     },
