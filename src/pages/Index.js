@@ -23,71 +23,72 @@ const Index = () => {
     <div className="min-h-screen p-4 md:p-6 lg:p-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <header className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8" style={{border: "5px solid yellow", padding: "10px", transform: "rotate(-1deg)"}}>
-          <div className="text-center sm:text-left">
-            <marquee behavior="scroll" direction="left" scrollamount="10">
-              <h1 className="text-glow" style={{fontSize: "50px", color: "red"}}>
-                Aplicación del Tiempo!!!
-              </h1>
-            </marquee>
-            <p style={{color: 'lime', fontSize: '20px', textDecoration: 'underline'}}>
-              Condiciones del clima actuales y pronósticos... O ALGO ASÍ!
-            </p>
-          </div>
+        <div className="caja-fea">
+          <h1 className="titulo-feo">
+            *** MI PAGINA DEL CLIMA ***
+          </h1>
+          <p style={{fontSize: '14px', color: 'blue', fontWeight: 'bold'}}>
+            BIENVENIDO A MI SITIO WEB !!! AQUI PODES VER EL CLIMA !!!
+          </p>
+          <marquee behavior="scroll" direction="left" scrollamount="3">
+            <span style={{color: 'red', fontSize: '12px'}}>
+              *** ULTIMA ACTUALIZACION: HOY *** GRATIS !!! ***
+            </span>
+          </marquee>
           
-          <div className="flex items-center gap-4" style={{flexDirection: "column"}}>
+          <div style={{marginTop: '15px', textAlign: 'center'}}>
             <SearchBar />
+            <br />
             <TemperatureToggle />
           </div>
-        </header>
+        </div>
 
         {/* Error Alert */}
         {state.error && (
-        <Alert className="mb-8 weather-card border-4 border-red-500 bg-red-100 text-red-800">
-          <AlertCircle className="h-5 w-5 text-red-500" />
-          <AlertDescription className="text-red-800 font-bold">{state.error}</AlertDescription>
-        </Alert>
+        <div style={{backgroundColor: '#ff0000', border: '3px solid black', padding: '10px', margin: '10px', color: 'white'}}>
+          <p style={{fontWeight: 'bold', fontSize: '16px'}}>ERROR: {state.error}</p>
+        </div>
         )}
 
         {/* Loading Spinner */}
         {state.loading && !state.currentWeather && (
-          <div style={{textAlign: 'center', padding: '50px'}}>
-            <div>
-              <p style={{fontSize: '18px', fontWeight: 'bold'}}>Cargando...</p>
-            </div>
+          <div className="caja-fea">
+            <center>
+              <p style={{fontSize: '18px', fontWeight: 'bold', color: 'red'}}>CARGANDO... ESPERE POR FAVOR...</p>
+              <p style={{fontSize: '12px'}}>*** PROCESANDO DATOS DEL CLIMA ***</p>
+            </center>
           </div>
         )}
 
         {/* Weather Content */}
         {!state.loading || state.currentWeather ? (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Left Column - Main Weather */}
-            <div className="lg:col-span-2 space-y-8">
-              <div>
+          <table border="2" cellpadding="10" cellspacing="0" style={{width: '100%', backgroundColor: '#ffffff'}}>
+            <tr>
+              <td style={{width: '70%', verticalAlign: 'top'}}>
                 <CurrentWeather />
-              </div>
-              <div>
+                <br />
                 <HourlyForecast />
-              </div>
-              <div>
+                <br />
                 <DailyForecast />
-              </div>
-            </div>
-
-            {/* Right Column - Popular Cities */}
-            <div className="space-y-8">
-              <div>
+              </td>
+              <td style={{width: '30%', verticalAlign: 'top', backgroundColor: '#ffff99'}}>
                 <PopularCities />
-              </div>
-            </div>
-          </div>
+              </td>
+            </tr>
+          </table>
         ) : null}
 
         {/* Footer */}
-        <footer style={{textAlign: 'center', color: 'gray', fontSize: '10px', marginTop: '30px'}}>
-          <p>Datos del clima por OpenWeatherMap</p>
-          <p>© 2024 App del Tiempo - Hecho con React</p>
-        </footer>
+        <div style={{backgroundColor: '#ff00ff', border: '2px solid black', textAlign: 'center', padding: '10px', marginTop: '20px'}}>
+          <marquee behavior="scroll" direction="right" scrollamount="2">
+            <span style={{color: 'white', fontSize: '12px', fontWeight: 'bold'}}>
+              *** DATOS DEL CLIMA POR OPENWEATHERMAP *** PAGINA HECHA EN 2024 *** GRACIAS POR VISITAR ***
+            </span>
+          </marquee>
+          <p style={{color: 'yellow', fontSize: '10px'}}>
+            © 2024 MI SITIO DEL TIEMPO - HECHO CON MUCHO AMOR Y HTML
+          </p>
+        </div>
       </div>
     </div>
   );

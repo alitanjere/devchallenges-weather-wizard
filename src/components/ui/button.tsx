@@ -9,14 +9,14 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "premium-button",
-        destructive: "bg-red-500 text-white border-4 border-red-500 hover:bg-red-600 p-2",
-        outline: "border-4 border-gray-500 bg-white text-black hover:bg-gray-200 p-2",
-        secondary: "bg-gray-400 text-black border-4 border-gray-400 hover:bg-gray-500 p-2",
-        ghost: "text-black hover:bg-gray-200 border-4 border-transparent p-2",
-        link: "text-blue-500 underline hover:text-blue-700 p-1",
-        glass: "weather-card text-black hover:text-blue-500",
-        premium: "premium-button",
+        default: "boton-feo",
+        destructive: "boton-feo",
+        outline: "boton-feo",
+        secondary: "boton-feo", 
+        ghost: "boton-feo",
+        link: "boton-feo",
+        glass: "boton-feo",
+        premium: "boton-feo",
       },
       size: {
         default: "h-10 px-4 py-2",
