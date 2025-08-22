@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { useSettings } from '@/contexts/SettingsContext';
+import { useSettings } from '@/contexts/SettingsContext.jsx';
 
 const TemperatureToggle = () => {
   const { temperatureUnit, toggleTemperatureUnit } = useSettings();

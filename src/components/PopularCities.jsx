@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import WeatherIcon from './WeatherIcon';
-import { useWeather } from '@/contexts/WeatherContext';
-import { useSettings } from '@/contexts/SettingsContext';
+import { useWeather } from '@/contexts/WeatherContext.jsx';
+import { useSettings } from '@/contexts/SettingsContext.jsx';
 import axios from 'axios';
 
 // Simple city weather object

@@ -1,8 +1,8 @@
 import React from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import WeatherIcon from './WeatherIcon';
-import { useWeather } from '@/contexts/WeatherContext';
-import { useSettings } from '@/contexts/SettingsContext';
+import { useWeather } from '@/contexts/WeatherContext.jsx';
+import { useSettings } from '@/contexts/SettingsContext.jsx';
 
 const HourlyForecast = () => {
   const { state } = useWeather();

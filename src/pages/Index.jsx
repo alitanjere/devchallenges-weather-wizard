@@ -7,7 +7,7 @@ import CurrentWeather from '@/components/CurrentWeather';
 import HourlyForecast from '@/components/HourlyForecast';
 import DailyForecast from '@/components/DailyForecast';
 import PopularCities from '@/components/PopularCities';
-import { useWeather } from '@/contexts/WeatherContext';
+import { useWeather } from '@/contexts/WeatherContext.jsx';
 
 const Index = () => {
   const { state, fetchWeatherByCity } = useWeather();

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Search, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { useWeather } from '@/contexts/WeatherContext';
+import { useWeather } from '@/contexts/WeatherContext.jsx';
 import { toast } from 'sonner';
 
 const SearchBar = () => {

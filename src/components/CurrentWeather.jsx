@@ -1,8 +1,8 @@
 import React from 'react';
 import { MapPin, Wind, Droplets, Eye, Gauge } from 'lucide-react';
 import WeatherIcon from './WeatherIcon';
-import { useWeather } from '@/contexts/WeatherContext';
-import { useSettings } from '@/contexts/SettingsContext';
+import { useWeather } from '@/contexts/WeatherContext.jsx';
+import { useSettings } from '@/contexts/SettingsContext.jsx';
 
 const CurrentWeather = () => {
   const { state } = useWeather();
