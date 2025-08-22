@@ -9,7 +9,7 @@ const SearchBar = () => {
   const [searchValue, setSearchValue] = useState('');
   const { fetchWeatherByCity, fetchWeatherByCoords, state } = useWeather();
 
-  const handleSearch = async (e: React.FormEvent) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
     if (!searchValue.trim()) return;
     
