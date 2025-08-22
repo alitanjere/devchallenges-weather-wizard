@@ -6,74 +6,81 @@
 
 @layer base {
   :root {
-    /* Ugly colors */
-    --background-primary: 120 100% 75%; /* Bright Green */
-    --background-secondary: 300 100% 75%; /* Bright Magenta */
-    --background-accent: 60 100% 75%; /* Bright Yellow */
+    /* Simple colors */
+    --background-primary: 0 0% 98%;
+    --background-secondary: 0 0% 95%;
+    --background-accent: 0 0% 90%;
     
     /* Text colors */
-    --foreground: 330 100% 50%; /* Hot Pink */
-    --foreground-muted: 180 100% 50%; /* Cyan */
-    --foreground-subtle: 210 100% 50%; /* Bright Blue */
+    --foreground: 0 0% 10%;
+    --foreground-muted: 0 0% 50%;
+    --foreground-subtle: 0 0% 70%;
 
     /* Card colors */
-    --glass: 270 100% 80%; /* Light Purple */
-    --glass-border: 0 100% 50%; /* Bright Red */
-    --glass-foreground: 30 100% 50%; /* Bright Orange */
+    --glass: 0 0% 100%;
+    --glass-border: 0 0% 70%;
+    --glass-foreground: 0 0% 10%;
 
     /* Weather colors */
-    --weather-sunny: 50 100% 60%; /* Orange-Yellow */
-    --weather-rainy: 240 100% 70%; /* Indigo */
-    --weather-cloudy: 0 0% 50%; /* Gray */
-    --weather-snowy: 180 50% 80%; /* Light Cyan */
+    --weather-sunny: 60 100% 50%;
+    --weather-rainy: 220 100% 50%;
+    --weather-cloudy: 0 0% 60%;
+    --weather-snowy: 210 100% 90%;
     
     /* Primary color */
-    --primary: 350 100% 60%; /* Bright Pink-Red */
-    --primary-foreground: 90 100% 50%; /* Lime Green */
-    --primary-glow: 350 100% 70%; /* Lighter Pink-Red */
+    --primary: 220 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 220 100% 60%;
 
     /* Secondary */
-    --secondary: 200 100% 60%; /* Sky Blue */
-    --secondary-foreground: 20 100% 40%; /* Dark Orange */
+    --secondary: 0 0% 80%;
+    --secondary-foreground: 0 0% 10%;
 
     /* States */
-    --hover: 45 100% 70%; /* Light Orange */
-    --active: 15 100% 60%; /* Orange-Red */
+    --hover: 0 0% 90%;
+    --active: 0 0% 85%;
     
     /* System */
-    --border: 0 0% 0%; /* Black */
-    --input: 120 100% 90%; /* Very Light Green */
-    --ring: 320 100% 50%; /* Magenta */
-    --destructive: 0 100% 50%; /* Red */
-    --destructive-foreground: 0 0% 100%; /* White */
+    --border: 0 0% 70%;
+    --input: 0 0% 100%;
+    --ring: 220 100% 50%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
 
-    --radius: 15px; /* Weird radius */
+    --radius: 0px;
 
     /* No fancy stuff */
-    --gradient-primary: linear-gradient(45deg, hsl(120 100% 75%), hsl(300 100% 75%));
-    --gradient-glass: linear-gradient(to bottom right, hsl(270 100% 80%), hsl(270 100% 90%));
-    --gradient-weather: linear-gradient(135deg, hsl(50 100% 60%), hsl(240 100% 70%));
-    --gradient-card: linear-gradient(to top left, hsl(270 100% 80%), hsl(0 100% 50%));
-    --gradient-border: hsl(0 100% 50%);
+    --gradient-primary: hsl(0, 0%, 98%);
+    --gradient-glass: hsl(0, 0%, 100%);
+    --gradient-weather: hsl(0, 0%, 100%);
+    --gradient-card: hsl(0, 0%, 100%);
+    --gradient-border: hsl(0, 0%, 70%);
     
     /* Basic shadows */
-    --shadow-glass: 5px 5px 15px rgba(255, 0, 255, 0.5);
-    --shadow-glow: 0 0 20px #ff00ff;
-    --shadow-elevated: 10px 10px 5px rgba(0, 255, 0, 0.5);
-    --shadow-subtle: 2px 2px 2px rgba(255, 255, 0, 0.5);
+    --shadow-glass: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-glow: none;
+    --shadow-elevated: 0 2px 5px rgba(0, 0, 0, 0.15);
+    --shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.05);
 
     /* Simple transitions */
-    --transition-smooth: all 0.5s ease-in-out;
-    --transition-bounce: transform 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    --transition-smooth: none;
+    --transition-bounce: none;
 
-    --sidebar-background: 120 100% 25%;
-    --sidebar-foreground: 60 100% 50%;
-    --sidebar-primary: 300 100% 50%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 180 100% 50%;
-    --sidebar-accent-foreground: 0 0% 0%;
-    --sidebar-border: 210 100% 50%;
-    --sidebar-ring: 330 100% 50%;
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
@@ -121,69 +128,50 @@
   }
 
   body {
-    background: url('https://www.publicdomainpictures.net/pictures/30000/velka/psychedelic-background.jpg');
-    color: var(--foreground);
+    background: #f0f0f0;
+    color: black;
     min-height: 100vh;
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    font-size: 16px;
-    text-shadow: 1px 1px 2px var(--background-secondary);
+    font-family: Arial;
+    font-size: 14px;
   }
 }
 
 @layer components {
   .glass {
-    background: var(--gradient-glass);
-    border: 10px dashed var(--glass-border);
-    padding: 15px;
-    margin: 10px;
+    background: white;
+    border: 2px solid black;
+    padding: 20px;
+    margin: 5px;
     text-align: center;
-    box-shadow: var(--shadow-glass);
-    transform: skew(-5deg);
   }
   
   .glass-hover {
-    transition: var(--transition-bounce);
+    /* nada */
   }
   
   .glass-hover:hover {
-    background: var(--hover);
-    transform: scale(1.1) rotate(5deg);
+    background: #dddddd;
   }
 
   .glow {
-    text-shadow: var(--shadow-glow);
+    /* sin brillo */
   }
 
   .text-glow {
-    color: var(--primary-foreground);
+    color: black;
     font-weight: bold;
-    font-size: 36px;
+    font-size: 24px;
     text-align: center;
-    animation: pulse 1.5s infinite;
   }
 
   .weather-card {
-    background: var(--gradient-card);
-    border: 8px dotted var(--primary);
-    padding: 25px;
-    margin: 0px;
-    text-align: left;
+    background: white;
+    border: 2px solid black;
+    padding: 20px;
+    margin: 5px;
+    text-align: center;
     width: 100%;
-    box-shadow: var(--shadow-elevated);
-    border-radius: var(--radius);
   }
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
 
   .premium-button {
     background: #0066cc;
