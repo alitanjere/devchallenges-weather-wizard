@@ -23,17 +23,19 @@ const Index = () => {
     <div className="min-h-screen p-4 md:p-6 lg:p-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <header className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+        <header className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8" style={{border: "5px solid yellow", padding: "10px", transform: "rotate(-1deg)"}}>
           <div className="text-center sm:text-left">
-            <h1 className="text-glow">
-              Aplicación del Tiempo
-            </h1>
-            <p style={{color: 'gray', fontSize: '12px'}}>
-              Condiciones del clima actuales y pronósticos
+            <marquee behavior="scroll" direction="left" scrollamount="10">
+              <h1 className="text-glow" style={{fontSize: "50px", color: "red"}}>
+                Aplicación del Tiempo!!!
+              </h1>
+            </marquee>
+            <p style={{color: 'lime', fontSize: '20px', textDecoration: 'underline'}}>
+              Condiciones del clima actuales y pronósticos... O ALGO ASÍ!
             </p>
           </div>
           
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4" style={{flexDirection: "column"}}>
             <SearchBar />
             <TemperatureToggle />
           </div>
