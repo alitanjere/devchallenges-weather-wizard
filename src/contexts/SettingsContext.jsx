@@ -5,7 +5,7 @@ const SettingsContext = createContext(undefined);
 export const SettingsProvider = ({ children }) => {
   const [temperatureUnit, setTemperatureUnit] = useState('celsius');
 
-  // Load saved preference from localStorage
+  // Cargar la preferencia guardada desde localStorage
   useEffect(() => {
     const saved = localStorage.getItem('weather-app-temperature-unit');
     if (saved && (saved === 'celsius' || saved === 'fahrenheit')) {
@@ -13,7 +13,7 @@ export const SettingsProvider = ({ children }) => {
     }
   }, []);
 
-  // Save preference to localStorage
+  // Guardar la preferencia en localStorage
   useEffect(() => {
     localStorage.setItem('weather-app-temperature-unit', temperatureUnit);
   }, [temperatureUnit]);
@@ -48,7 +48,7 @@ export const SettingsProvider = ({ children }) => {
 export const useSettings = () => {
   const context = useContext(SettingsContext);
   if (context === undefined) {
-    throw new Error('useSettings must be used within a SettingsProvider');
+    throw new Error('useSettings debe utilizarse dentro de un SettingsProvider');
   }
   return context;
 };

@@ -14,13 +14,13 @@ const SearchBar = () => {
       await fetchWeatherByCity(searchValue.trim());
       setSearchValue('');
     } catch (error) {
-      console.error('City not found');
+      console.error('Ciudad no encontrada');
     }
   };
 
   const handleLocationRequest = () => {
     if (!navigator.geolocation) {
-      console.error('Geolocation is not supported by this browser');
+      console.error('La geolocalización no es compatible con este navegador');
       return;
     }
 
@@ -32,11 +32,11 @@ const SearchBar = () => {
             position.coords.longitude
           );
         } catch (error) {
-          console.error('Failed to get weather for current location');
+          console.error('No se pudo obtener el clima para tu ubicación actual');
         }
       },
       () => {
-        console.error('Unable to retrieve your location');
+        console.error('No se pudo obtener tu ubicación');
       }
     );
   };
@@ -46,7 +46,7 @@ const SearchBar = () => {
       <div className="relative">
         <input
           type="text"
-          placeholder="Search city..."
+          placeholder="Buscar ciudad..."
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
           className="w-full border rounded pl-10 pr-20 py-2 text-gray-700 placeholder:text-gray-400"

@@ -10,7 +10,7 @@ import { useWeather } from '@/contexts/WeatherContext.jsx';
 const Index = () => {
   const { state, fetchWeatherByCity } = useWeather();
 
-  // Load default city on first visit
+  // Cargar ciudad predeterminada en la primera visita
   useEffect(() => {
     if (!state.currentWeather && !state.loading) {
       fetchWeatherByCity('Helsinki');
@@ -21,7 +21,7 @@ const Index = () => {
     <div className="min-h-screen bg-gray-100 p-4">
       <div className="max-w-4xl mx-auto space-y-6">
         <header className="text-center space-y-2">
-          <h1 className="text-2xl font-semibold">Weather App</h1>
+          <h1 className="text-2xl font-semibold">Aplicación del clima</h1>
           <div className="flex flex-col items-center gap-2">
             <SearchBar />
             <TemperatureToggle />
@@ -35,7 +35,7 @@ const Index = () => {
         )}
 
         {state.loading && !state.currentWeather ? (
-          <p className="text-center">Loading...</p>
+          <p className="text-center">Cargando...</p>
         ) : (
           <div className="grid md:grid-cols-3 gap-4">
             <div className="md:col-span-2 space-y-4">
@@ -50,7 +50,7 @@ const Index = () => {
         )}
 
         <footer className="text-center text-xs text-gray-500">
-          © 2024 Weather App
+          © 2024 Aplicación del clima
         </footer>
       </div>
     </div>

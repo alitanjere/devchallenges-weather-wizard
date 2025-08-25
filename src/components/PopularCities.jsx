@@ -37,7 +37,7 @@ const PopularCities = () => {
 
         setCities(citiesData);
       } catch (error) {
-        console.error('Failed to fetch cities weather:', error);
+        console.error('No se pudo obtener el clima de las ciudades:', error);
       } finally {
         setLoading(false);
       }
@@ -53,15 +53,15 @@ const PopularCities = () => {
   if (loading) {
     return (
       <div className="card">
-        <h3 className="text-lg font-semibold mb-4">Other Large Cities</h3>
-        <p>Loading...</p>
+        <h3 className="text-lg font-semibold mb-4">Otras grandes ciudades</h3>
+        <p>Cargando...</p>
       </div>
     );
   }
 
   return (
     <div className="card">
-      <h3 className="text-lg font-semibold mb-4">Other Large Cities</h3>
+      <h3 className="text-lg font-semibold mb-4">Otras grandes ciudades</h3>
 
       <div className="space-y-2">
         {cities.map((city, index) => (
