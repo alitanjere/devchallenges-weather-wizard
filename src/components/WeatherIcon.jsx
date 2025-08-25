@@ -1,20 +1,18 @@
 import React from 'react';
-import { 
-  Sun, 
-  Cloud, 
-  CloudRain, 
-  CloudSnow, 
+import {
+  Sun,
+  Cloud,
+  CloudRain,
+  CloudSnow,
   CloudLightning,
   CloudDrizzle,
-  Eye,
-  Zap,
   CloudFog
 } from 'lucide-react';
 
 const WeatherIcon = ({
-  iconCode, 
-  size = 'md', 
-  animated = false 
+  iconCode,
+  size = 'md',
+  animated = false
 }) => {
   const sizeClasses = {
     sm: 'h-4 w-4',
@@ -23,9 +21,9 @@ const WeatherIcon = ({
     xl: 'h-12 w-12'
   };
 
-  const getIcon = (code: string) => {
+  const getIcon = (code) => {
     const iconClass = `${sizeClasses[size]} ${animated ? 'animate-float' : ''}`;
-    
+
     switch (code) {
       case '01d': // clear sky day
         return <Sun className={`${iconClass} text-weather-sunny`} />;

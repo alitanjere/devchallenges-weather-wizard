@@ -1,33 +1,22 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { WeatherProvider } from "@/contexts/WeatherContext.jsx";
-import { SettingsProvider } from "@/contexts/SettingsContext.jsx";
-import Index from "./pages/Index.jsx";
-import NotFound from "./pages/NotFound.jsx";
-
-const queryClient = new QueryClient();
+import { Toaster } from 'sonner';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { WeatherProvider } from '@/contexts/WeatherContext.jsx';
+import { SettingsProvider } from '@/contexts/SettingsContext.jsx';
+import Index from './pages/Index.jsx';
+import NotFound from './pages/NotFound.jsx';
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <WeatherProvider>
-      <SettingsProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </TooltipProvider>
-      </SettingsProvider>
-    </WeatherProvider>
-  </QueryClientProvider>
+  <WeatherProvider>
+    <SettingsProvider>
+      <Toaster />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </SettingsProvider>
+  </WeatherProvider>
 );
 
 export default App;

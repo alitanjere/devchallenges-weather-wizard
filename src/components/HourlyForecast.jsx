@@ -1,5 +1,4 @@
 import React from 'react';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import WeatherIcon from './WeatherIcon';
 import { useWeather } from '@/contexts/WeatherContext.jsx';
 import { useSettings } from '@/contexts/SettingsContext.jsx';
@@ -28,30 +27,30 @@ const HourlyForecast = () => {
   return (
     <div className="glass glass-hover rounded-2xl p-6 animate-slide-in">
       <h3 className="text-lg font-semibold mb-4">24-Hour Forecast</h3>
-      
-      <ScrollArea className="w-full">
+
+      <div className="w-full overflow-x-auto">
         <div className="flex gap-4 pb-2">
           {state.hourlyForecast.map((hour, index) => (
-            <div 
+            <div
               key={index}
               className="flex flex-col items-center gap-2 min-w-[70px] hover:bg-white/5 rounded-lg p-2 transition-colors"
             >
               <div className="text-xs text-text-muted">
                 {index === 0 ? 'Now' : hour.time}
               </div>
-              
-              <WeatherIcon 
-                iconCode={hour.icon} 
-                size="md" 
+
+              <WeatherIcon
+                iconCode={hour.icon}
+                size="md"
               />
-              
+
               <div className="text-sm font-medium">
                 {convertTemperature(hour.temperature)}{getTemperatureSymbol()}
               </div>
             </div>
           ))}
         </div>
-      </ScrollArea>
+      </div>
     </div>
   );
 };
