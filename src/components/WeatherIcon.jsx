@@ -23,7 +23,7 @@ const WeatherIcon = ({
     xl: 'h-12 w-12'
   };
 
-  const getIcon = (code: string) => {
+  const getIcon = (code) => {
     const iconClass = `${sizeClasses[size]} ${animated ? 'animate-float' : ''}`;
     
     switch (code) {
