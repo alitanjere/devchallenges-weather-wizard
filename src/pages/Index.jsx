@@ -18,75 +18,40 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen p-4 md:p-6 lg:p-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="caja-fea">
-          <h1 className="titulo-feo">
-            *** MI PAGINA DEL CLIMA ***
-          </h1>
-          <p style={{fontSize: '14px', color: 'blue', fontWeight: 'bold'}}>
-            BIENVENIDO A MI SITIO WEB !!! AQUI PODES VER EL CLIMA !!!
-          </p>
-          <marquee behavior="scroll" direction="left" scrollamount="3">
-            <span style={{color: 'red', fontSize: '12px'}}>
-              *** ULTIMA ACTUALIZACION: HOY *** GRATIS !!! ***
-            </span>
-          </marquee>
-
-          <div style={{marginTop: '15px', textAlign: 'center'}}>
+    <div className="min-h-screen bg-gray-100 p-4">
+      <div className="max-w-4xl mx-auto space-y-6">
+        <header className="text-center space-y-2">
+          <h1 className="text-2xl font-semibold">Weather App</h1>
+          <div className="flex flex-col items-center gap-2">
             <SearchBar />
-            <br />
             <TemperatureToggle />
           </div>
-        </div>
+        </header>
 
-        {/* Error Alert */}
         {state.error && (
-        <div style={{backgroundColor: '#ff0000', border: '3px solid black', padding: '10px', margin: '10px', color: 'white'}}>
-          <p style={{fontWeight: 'bold', fontSize: '16px'}}>ERROR: {state.error}</p>
-        </div>
-        )}
-
-        {/* Loading Spinner */}
-        {state.loading && !state.currentWeather && (
-          <div className="caja-fea">
-            <center>
-              <p style={{fontSize: '18px', fontWeight: 'bold', color: 'red'}}>CARGANDO... ESPERE POR FAVOR...</p>
-              <p style={{fontSize: '12px'}}>*** PROCESANDO DATOS DEL CLIMA ***</p>
-            </center>
+          <div className="bg-red-100 text-red-700 p-2 rounded">
+            {state.error}
           </div>
         )}
 
-        {/* Weather Content */}
-        {!state.loading || state.currentWeather ? (
-          <table border="2" cellpadding="10" cellspacing="0" style={{width: '100%', backgroundColor: '#ffffff'}}>
-            <tr>
-              <td style={{width: '70%', verticalAlign: 'top'}}>
-                <CurrentWeather />
-                <br />
-                <HourlyForecast />
-                <br />
-                <DailyForecast />
-              </td>
-              <td style={{width: '30%', verticalAlign: 'top', backgroundColor: '#ffff99'}}>
-                <PopularCities />
-              </td>
-            </tr>
-          </table>
-        ) : null}
+        {state.loading && !state.currentWeather ? (
+          <p className="text-center">Loading...</p>
+        ) : (
+          <div className="grid md:grid-cols-3 gap-4">
+            <div className="md:col-span-2 space-y-4">
+              <CurrentWeather />
+              <HourlyForecast />
+              <DailyForecast />
+            </div>
+            <div>
+              <PopularCities />
+            </div>
+          </div>
+        )}
 
-        {/* Footer */}
-        <div style={{backgroundColor: '#ff00ff', border: '2px solid black', textAlign: 'center', padding: '10px', marginTop: '20px'}}>
-          <marquee behavior="scroll" direction="right" scrollamount="2">
-            <span style={{color: 'white', fontSize: '12px', fontWeight: 'bold'}}>
-              *** DATOS DEL CLIMA POR OPENWEATHERMAP *** PAGINA HECHA EN 2024 *** GRACIAS POR VISITAR ***
-            </span>
-          </marquee>
-          <p style={{color: 'yellow', fontSize: '10px'}}>
-            © 2024 MI SITIO DEL TIEMPO - HECHO CON MUCHO AMOR Y HTML
-          </p>
-        </div>
+        <footer className="text-center text-xs text-gray-500">
+          © 2024 Weather App
+        </footer>
       </div>
     </div>
   );

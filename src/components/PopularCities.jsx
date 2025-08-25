@@ -52,28 +52,15 @@ const PopularCities = () => {
 
   if (loading) {
     return (
-      <div className="glass rounded-2xl p-6">
+      <div className="card">
         <h3 className="text-lg font-semibold mb-4">Other Large Cities</h3>
-        <div className="space-y-3 animate-pulse">
-          {[...Array(5)].map((_, i) => (
-            <div key={i} className="flex items-center justify-between py-2">
-              <div className="flex items-center gap-3">
-                <div className="h-4 bg-white/20 rounded w-20"></div>
-                <div className="h-4 bg-white/20 rounded w-16"></div>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="h-6 w-6 bg-white/20 rounded"></div>
-                <div className="h-4 bg-white/20 rounded w-8"></div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <p>Loading...</p>
       </div>
     );
   }
 
   return (
-    <div className="glass glass-hover rounded-2xl p-6 animate-slide-in">
+    <div className="card">
       <h3 className="text-lg font-semibold mb-4">Other Large Cities</h3>
 
       <div className="space-y-2">
@@ -81,20 +68,18 @@ const PopularCities = () => {
           <button
             key={index}
             onClick={() => handleCityClick(city.name)}
-            className="w-full flex items-center justify-between py-3 px-3 hover:bg-white/10 rounded-lg transition-colors text-left h-auto"
+            className="w-full flex items-center justify-between py-2 text-left"
           >
-            <div className="flex items-center gap-3">
-              <div>
-                <div className="text-sm font-medium text-foreground">
-                  {city.name}
-                </div>
-                <div className="text-xs text-text-muted capitalize">
-                  {city.description}
-                </div>
+            <div>
+              <div className="text-sm font-medium">
+                {city.name}
+              </div>
+              <div className="text-xs text-gray-500 capitalize">
+                {city.description}
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <WeatherIcon
                 iconCode={city.icon}
                 size="sm"

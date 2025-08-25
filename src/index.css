@@ -2,88 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* DISEÑO SUPER FEO AÑOS 90 */
-
 @layer base {
-  :root {
-    /* Colores horribles */
-    --background: 60 100% 95%; /* Amarillo clarito */
-    --foreground: 0 0% 0%; /* Negro */
-    
-    /* Colores de texto */
-    --text-primary: 0 0% 0%; /* Negro */
-    --text-secondary: 240 100% 50%; /* Azul fuerte */
-    
-    /* Bordes */
-    --border: 0 0% 0%; /* Negro */
-    
-    /* Botones feos */
-    --button-bg: 120 100% 75%; /* Verde claro */
-    --button-hover: 120 100% 60%; /* Verde más fuerte */
-    
-    --primary: 300 100% 50%; /* Magenta */
-    --primary-foreground: 60 100% 50%; /* Amarillo */
-    
-    --secondary: 0 100% 75%; /* Rosa */
-    --secondary-foreground: 0 0% 0%; /* Negro */
-    
-    --destructive: 0 100% 50%; /* Rojo */
-    --destructive-foreground: 0 0% 100%; /* Blanco */
-    
-    --input: 180 100% 90%; /* Celeste claro */
-    --ring: 0 100% 50%; /* Rojo */
-  }
-}
-
-@layer base {
-  * {
-    border-color: black;
-  }
-
   body {
-    background: repeating-linear-gradient(
-      45deg,
-      #ffff00,
-      #ffff00 10px,
-      #ffffff 10px,
-      #ffffff 20px
-    );
-    color: black;
-    font-family: "Times New Roman", serif;
-    font-size: 16px;
-    text-align: center;
+    @apply bg-gray-100 text-gray-800 font-sans;
   }
 }
 
 @layer components {
-  .caja-fea {
-    background-color: #00ffff;
-    border: 5px solid black;
-    padding: 20px;
-    margin: 10px;
-    text-align: left;
-  }
-  
-  .boton-feo {
-    background-color: #ff00ff;
-    border: 3px solid black;
-    color: black;
-    padding: 10px 15px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  .boton-feo:hover {
-    background-color: #ffff00;
-    color: red;
-  }
-  
-  .titulo-feo {
-    color: red;
-    font-size: 24px;
-    font-weight: bold;
-    text-decoration: underline;
-    text-align: center;
+  .card {
+    @apply bg-white rounded-md shadow p-4;
   }
 }

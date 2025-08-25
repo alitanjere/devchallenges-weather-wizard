@@ -5,23 +5,19 @@ const TemperatureToggle = () => {
   const { temperatureUnit, toggleTemperatureUnit } = useSettings();
 
   return (
-    <div className="flex items-center gap-1 glass rounded-full p-1">
+    <div className="flex items-center gap-2">
       <button
         onClick={toggleTemperatureUnit}
-        className={`h-8 w-8 rounded-full transition-all duration-300 ${
-          temperatureUnit === 'celsius'
-            ? 'bg-primary text-primary-foreground shadow-md'
-            : 'text-text-muted hover:text-foreground hover:bg-white/10'
+        className={`px-2 py-1 border rounded ${
+          temperatureUnit === 'celsius' ? 'bg-gray-200' : ''
         }`}
       >
         °C
       </button>
       <button
         onClick={toggleTemperatureUnit}
-        className={`h-8 w-8 rounded-full transition-all duration-300 ${
-          temperatureUnit === 'fahrenheit'
-            ? 'bg-primary text-primary-foreground shadow-md'
-            : 'text-text-muted hover:text-foreground hover:bg-white/10'
+        className={`px-2 py-1 border rounded ${
+          temperatureUnit === 'fahrenheit' ? 'bg-gray-200' : ''
         }`}
       >
         °F

@@ -9,23 +9,15 @@ const CurrentWeather = () => {
   const { convertTemperature, getTemperatureSymbol } = useSettings();
 
   if (!state.currentWeather) {
-    return (
-      <div className="glass rounded-2xl p-8 animate-pulse">
-        <div className="space-y-4">
-          <div className="h-4 bg-white/20 rounded w-1/3"></div>
-          <div className="h-16 bg-white/20 rounded w-1/2"></div>
-          <div className="h-4 bg-white/20 rounded w-2/3"></div>
-        </div>
-      </div>
-    );
+    return null;
   }
 
   const weather = state.currentWeather;
 
   return (
-    <div className="glass glass-hover rounded-2xl p-8 space-y-6 animate-slide-in">
+    <div className="card space-y-6">
       {/* Location */}
-      <div className="flex items-center gap-2 text-text-muted">
+      <div className="flex items-center gap-2 text-gray-500">
         <MapPin className="h-4 w-4" />
         <span className="text-sm font-medium">
           {weather.location}, {weather.country}
@@ -35,66 +27,65 @@ const CurrentWeather = () => {
       {/* Main Temperature */}
       <div className="flex items-center justify-between">
         <div>
-          <div className="text-6xl font-bold text-glow animate-glow">
+          <div className="text-5xl font-bold">
             {convertTemperature(weather.temperature)}{getTemperatureSymbol()}
           </div>
-          <div className="text-text-muted text-sm mt-1">
+          <div className="text-gray-500 text-sm mt-1">
             Feels like {convertTemperature(weather.feelsLike)}{getTemperatureSymbol()}
           </div>
         </div>
-        
+
         <div className="text-right">
-          <WeatherIcon 
-            iconCode={weather.icon} 
-            size="xl" 
-            animated 
+          <WeatherIcon
+            iconCode={weather.icon}
+            size="xl"
           />
-          <div className="text-text-muted text-sm mt-2 capitalize">
+          <div className="text-gray-500 text-sm mt-2 capitalize">
             {weather.description}
           </div>
         </div>
       </div>
 
       {/* High/Low Temperatures */}
-      <div className="flex justify-between text-sm">
-        <span className="text-text-muted">
+      <div className="flex justify-between text-sm text-gray-500">
+        <span>
           H: {convertTemperature(weather.highTemp)}{getTemperatureSymbol()}
         </span>
-        <span className="text-text-muted">
+        <span>
           L: {convertTemperature(weather.lowTemp)}{getTemperatureSymbol()}
         </span>
       </div>
 
       {/* Weather Details Grid */}
-      <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/10">
+      <div className="grid grid-cols-2 gap-4 pt-4 border-t">
         <div className="flex items-center gap-3">
-          <Wind className="h-4 w-4 text-primary" />
+          <Wind className="h-4 w-4 text-gray-500" />
           <div>
-            <div className="text-sm text-text-muted">Wind</div>
+            <div className="text-sm text-gray-500">Wind</div>
             <div className="text-sm font-medium">{weather.windSpeed} m/s</div>
           </div>
         </div>
 
         <div className="flex items-center gap-3">
-          <Droplets className="h-4 w-4 text-primary" />
+          <Droplets className="h-4 w-4 text-gray-500" />
           <div>
-            <div className="text-sm text-text-muted">Humidity</div>
+            <div className="text-sm text-gray-500">Humidity</div>
             <div className="text-sm font-medium">{weather.humidity}%</div>
           </div>
         </div>
 
         <div className="flex items-center gap-3">
-          <Eye className="h-4 w-4 text-primary" />
+          <Eye className="h-4 w-4 text-gray-500" />
           <div>
-            <div className="text-sm text-text-muted">Visibility</div>
+            <div className="text-sm text-gray-500">Visibility</div>
             <div className="text-sm font-medium">{weather.visibility} km</div>
           </div>
         </div>
 
         <div className="flex items-center gap-3">
-          <Gauge className="h-4 w-4 text-primary" />
+          <Gauge className="h-4 w-4 text-gray-500" />
           <div>
-            <div className="text-sm text-text-muted">Pressure</div>
+            <div className="text-sm text-gray-500">Pressure</div>
             <div className="text-sm font-medium">{weather.pressure} hPa</div>
           </div>
         </div>
