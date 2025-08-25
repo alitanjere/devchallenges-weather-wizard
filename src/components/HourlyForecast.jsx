@@ -27,7 +27,7 @@ const HourlyForecast = () => {
               key={index}
               className="flex flex-col items-center gap-2 min-w-[70px] p-2"
             >
-              <div className="text-xs text-gray-500">
+              <div className="text-xs text-gray-500 dark:text-gray-400">
                 {index === 0 ? 'Ahora' : hour.time}
               </div>
 

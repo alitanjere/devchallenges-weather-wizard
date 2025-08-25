@@ -24,15 +24,15 @@ const WeatherIcon = ({ iconCode, size = 'md' }) => {
       case '01d': // clear sky day
         return <Sun className={`${iconClass} text-yellow-500`} />;
       case '01n': // clear sky night
-        return <div className={`${iconClass} text-gray-500`}>🌙</div>;
+        return <div className={`${iconClass} text-gray-500 dark:text-gray-400`}>🌙</div>;
       case '02d':
       case '02n': // few clouds
-        return <Cloud className={`${iconClass} text-gray-500`} />;
+        return <Cloud className={`${iconClass} text-gray-500 dark:text-gray-400`} />;
       case '03d':
       case '03n': // scattered clouds
       case '04d':
       case '04n': // broken clouds
-        return <Cloud className={`${iconClass} text-gray-500`} />;
+        return <Cloud className={`${iconClass} text-gray-500 dark:text-gray-400`} />;
       case '09d':
       case '09n': // shower rain
         return <CloudDrizzle className={`${iconClass} text-blue-500`} />;
@@ -47,7 +47,7 @@ const WeatherIcon = ({ iconCode, size = 'md' }) => {
         return <CloudSnow className={`${iconClass} text-blue-500`} />;
       case '50d':
       case '50n': // mist
-        return <CloudFog className={`${iconClass} text-gray-500`} />;
+        return <CloudFog className={`${iconClass} text-gray-500 dark:text-gray-400`} />;
       default:
         return <Sun className={`${iconClass} text-yellow-500`} />;
     }

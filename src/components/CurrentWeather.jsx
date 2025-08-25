@@ -17,7 +17,7 @@ const CurrentWeather = () => {
   return (
     <div className="card space-y-6">
       {/* Location */}
-      <div className="flex items-center gap-2 text-gray-500">
+      <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
         <MapPin className="h-4 w-4" />
         <span className="text-sm font-medium">
           {weather.location}, {weather.country}
@@ -30,7 +30,7 @@ const CurrentWeather = () => {
           <div className="text-5xl font-bold">
             {convertTemperature(weather.temperature)}{getTemperatureSymbol()}
           </div>
-          <div className="text-gray-500 text-sm mt-1">
+          <div className="text-gray-500 dark:text-gray-400 text-sm mt-1">
             Sensación térmica {convertTemperature(weather.feelsLike)}{getTemperatureSymbol()}
           </div>
         </div>
@@ -40,14 +40,14 @@ const CurrentWeather = () => {
             iconCode={weather.icon}
             size="xl"
           />
-          <div className="text-gray-500 text-sm mt-2 capitalize">
+          <div className="text-gray-500 dark:text-gray-400 text-sm mt-2 capitalize">
             {weather.description}
           </div>
         </div>
       </div>
 
       {/* High/Low Temperatures */}
-      <div className="flex justify-between text-sm text-gray-500">
+      <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
         <span>
           Máx: {convertTemperature(weather.highTemp)}{getTemperatureSymbol()}
         </span>
@@ -57,35 +57,35 @@ const CurrentWeather = () => {
       </div>
 
       {/* Weather Details Grid */}
-      <div className="grid grid-cols-2 gap-4 pt-4 border-t">
+      <div className="grid grid-cols-2 gap-4 pt-4 border-t dark:border-gray-700">
         <div className="flex items-center gap-3">
-          <Wind className="h-4 w-4 text-gray-500" />
+          <Wind className="h-4 w-4 text-gray-500 dark:text-gray-400" />
           <div>
-            <div className="text-sm text-gray-500">Viento</div>
+            <div className="text-sm text-gray-500 dark:text-gray-400">Viento</div>
             <div className="text-sm font-medium">{weather.windSpeed} m/s</div>
           </div>
         </div>
 
         <div className="flex items-center gap-3">
-          <Droplets className="h-4 w-4 text-gray-500" />
+          <Droplets className="h-4 w-4 text-gray-500 dark:text-gray-400" />
           <div>
-            <div className="text-sm text-gray-500">Humedad</div>
+            <div className="text-sm text-gray-500 dark:text-gray-400">Humedad</div>
             <div className="text-sm font-medium">{weather.humidity}%</div>
           </div>
         </div>
 
         <div className="flex items-center gap-3">
-          <Eye className="h-4 w-4 text-gray-500" />
+          <Eye className="h-4 w-4 text-gray-500 dark:text-gray-400" />
           <div>
-            <div className="text-sm text-gray-500">Visibilidad</div>
+            <div className="text-sm text-gray-500 dark:text-gray-400">Visibilidad</div>
             <div className="text-sm font-medium">{weather.visibility} km</div>
           </div>
         </div>
 
         <div className="flex items-center gap-3">
-          <Gauge className="h-4 w-4 text-gray-500" />
+          <Gauge className="h-4 w-4 text-gray-500 dark:text-gray-400" />
           <div>
-            <div className="text-sm text-gray-500">Presión</div>
+            <div className="text-sm text-gray-500 dark:text-gray-400">Presión</div>
             <div className="text-sm font-medium">{weather.pressure} hPa</div>
           </div>
         </div>
