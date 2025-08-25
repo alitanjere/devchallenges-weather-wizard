@@ -74,7 +74,7 @@ const PopularCities = () => {
               <div className="text-sm font-medium">
                 {city.name}
               </div>
-              <div className="text-xs text-gray-500 capitalize">
+              <div className="text-xs text-gray-500 dark:text-gray-400 capitalize">
                 {city.description}
               </div>
             </div>

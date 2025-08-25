@@ -36,13 +36,13 @@ const DailyForecast = () => {
                 size="md"
               />
 
-              <div className="text-sm text-gray-500 capitalize flex-1">
+              <div className="text-sm text-gray-500 dark:text-gray-400 capitalize flex-1">
                 {day.description}
               </div>
             </div>
 
             <div className="flex items-center gap-4 text-sm">
-              <span className="text-gray-500">
+              <span className="text-gray-500 dark:text-gray-400">
                 {convertTemperature(day.lowTemp)}{getTemperatureSymbol()}
               </span>
               <span className="font-medium">

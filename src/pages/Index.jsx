@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import SearchBar from '@/components/SearchBar';
 import TemperatureToggle from '@/components/TemperatureToggle';
+import ThemeToggle from '@/components/ThemeToggle';
 import CurrentWeather from '@/components/CurrentWeather';
 import HourlyForecast from '@/components/HourlyForecast';
 import DailyForecast from '@/components/DailyForecast';
@@ -18,18 +19,21 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-4">
       <div className="max-w-4xl mx-auto space-y-6">
         <header className="text-center space-y-2">
           <h1 className="text-2xl font-semibold">Aplicación del clima</h1>
           <div className="flex flex-col items-center gap-2">
             <SearchBar />
-            <TemperatureToggle />
+            <div className="flex items-center gap-2">
+              <TemperatureToggle />
+              <ThemeToggle />
+            </div>
           </div>
         </header>
 
         {state.error && (
-          <div className="bg-red-100 text-red-700 p-2 rounded">
+          <div className="bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300 p-2 rounded">
             {state.error}
           </div>
         )}
@@ -49,7 +53,7 @@ const Index = () => {
           </div>
         )}
 
-        <footer className="text-center text-xs text-gray-500">
+        <footer className="text-center text-xs text-gray-500 dark:text-gray-400">
           © 2024 Aplicación del clima
         </footer>
       </div>

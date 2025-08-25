@@ -49,18 +49,18 @@ const SearchBar = () => {
           placeholder="Buscar ciudad..."
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
-          className="w-full border rounded pl-10 pr-20 py-2 text-gray-700 placeholder:text-gray-400"
+          className="w-full border rounded pl-10 pr-20 py-2 text-gray-700 placeholder:text-gray-400 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 dark:placeholder:text-gray-400"
           disabled={state.loading}
         />
 
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500 dark:text-gray-400" />
 
         <div className="absolute right-2 top-1/2 -translate-y-1/2 flex gap-1">
           <button
             type="button"
             onClick={handleLocationRequest}
             disabled={state.loading}
-            className="h-8 w-8 p-0 text-gray-600"
+            className="h-8 w-8 p-0 text-gray-600 dark:text-gray-300"
           >
             <MapPin className="h-4 w-4" />
           </button>
@@ -68,7 +68,7 @@ const SearchBar = () => {
           <button
             type="submit"
             disabled={state.loading || !searchValue.trim()}
-            className="h-8 w-8 p-0 text-gray-600"
+            className="h-8 w-8 p-0 text-gray-600 dark:text-gray-300"
           >
             <Search className="h-4 w-4" />
           </button>
