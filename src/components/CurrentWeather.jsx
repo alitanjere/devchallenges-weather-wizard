@@ -31,7 +31,7 @@ const CurrentWeather = () => {
             {convertTemperature(weather.temperature)}{getTemperatureSymbol()}
           </div>
           <div className="text-gray-500 text-sm mt-1">
-            Feels like {convertTemperature(weather.feelsLike)}{getTemperatureSymbol()}
+            Sensación térmica {convertTemperature(weather.feelsLike)}{getTemperatureSymbol()}
           </div>
         </div>
 
@@ -49,10 +49,10 @@ const CurrentWeather = () => {
       {/* High/Low Temperatures */}
       <div className="flex justify-between text-sm text-gray-500">
         <span>
-          H: {convertTemperature(weather.highTemp)}{getTemperatureSymbol()}
+          Máx: {convertTemperature(weather.highTemp)}{getTemperatureSymbol()}
         </span>
         <span>
-          L: {convertTemperature(weather.lowTemp)}{getTemperatureSymbol()}
+          Mín: {convertTemperature(weather.lowTemp)}{getTemperatureSymbol()}
         </span>
       </div>
 
@@ -61,7 +61,7 @@ const CurrentWeather = () => {
         <div className="flex items-center gap-3">
           <Wind className="h-4 w-4 text-gray-500" />
           <div>
-            <div className="text-sm text-gray-500">Wind</div>
+            <div className="text-sm text-gray-500">Viento</div>
             <div className="text-sm font-medium">{weather.windSpeed} m/s</div>
           </div>
         </div>
@@ -69,7 +69,7 @@ const CurrentWeather = () => {
         <div className="flex items-center gap-3">
           <Droplets className="h-4 w-4 text-gray-500" />
           <div>
-            <div className="text-sm text-gray-500">Humidity</div>
+            <div className="text-sm text-gray-500">Humedad</div>
             <div className="text-sm font-medium">{weather.humidity}%</div>
           </div>
         </div>
@@ -77,7 +77,7 @@ const CurrentWeather = () => {
         <div className="flex items-center gap-3">
           <Eye className="h-4 w-4 text-gray-500" />
           <div>
-            <div className="text-sm text-gray-500">Visibility</div>
+            <div className="text-sm text-gray-500">Visibilidad</div>
             <div className="text-sm font-medium">{weather.visibility} km</div>
           </div>
         </div>
@@ -85,7 +85,7 @@ const CurrentWeather = () => {
         <div className="flex items-center gap-3">
           <Gauge className="h-4 w-4 text-gray-500" />
           <div>
-            <div className="text-sm text-gray-500">Pressure</div>
+            <div className="text-sm text-gray-500">Presión</div>
             <div className="text-sm font-medium">{weather.pressure} hPa</div>
           </div>
         </div>

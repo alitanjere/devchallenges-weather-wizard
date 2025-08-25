@@ -49,7 +49,7 @@ export const WeatherProvider = ({ children }) => {
 
       // Fetch current weather
       const currentResponse = await axios.get(
-        `${BASE_URL}/weather?q=${city}&appid=${API_KEY}&units=metric`
+        `${BASE_URL}/weather?q=${city}&appid=${API_KEY}&units=metric&lang=es`
       );
 
       const current = currentResponse.data;
@@ -76,16 +76,16 @@ export const WeatherProvider = ({ children }) => {
 
       // Fetch 5-day forecast (includes hourly data)
       const forecastResponse = await axios.get(
-        `${BASE_URL}/forecast?q=${city}&appid=${API_KEY}&units=metric`
+        `${BASE_URL}/forecast?q=${city}&appid=${API_KEY}&units=metric&lang=es`
       );
 
       const forecast = forecastResponse.data;
       
       // Process hourly forecast (next 24 hours)
       const hourlyData = forecast.list.slice(0, 8).map((item) => ({
-        time: new Date(item.dt * 1000).toLocaleTimeString('en-US', { 
-          hour: 'numeric', 
-          hour12: true 
+        time: new Date(item.dt * 1000).toLocaleTimeString('es-ES', {
+          hour: 'numeric',
+          hour12: true
         }),
         temperature: Math.round(item.main.temp),
         icon: item.weather[0].icon,
@@ -114,7 +114,7 @@ export const WeatherProvider = ({ children }) => {
 
         dailyData.push({
           date,
-          day: new Date(date).toLocaleDateString('en-US', { weekday: 'short' }),
+          day: new Date(date).toLocaleDateString('es-ES', { weekday: 'short' }),
           highTemp,
           lowTemp,
           icon: mainWeather.icon,
@@ -127,7 +127,7 @@ export const WeatherProvider = ({ children }) => {
     } catch (error) {
       dispatch({ 
         type: 'SET_ERROR', 
-        payload: error.response?.data?.message || 'Failed to fetch weather data' 
+        payload: error.response?.data?.message || 'No se pudieron obtener los datos del clima'
       });
     } finally {
       dispatch({ type: 'SET_LOADING', payload: false });
@@ -140,7 +140,7 @@ export const WeatherProvider = ({ children }) => {
       dispatch({ type: 'CLEAR_ERROR' });
 
       const currentResponse = await axios.get(
-        `${BASE_URL}/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+        `${BASE_URL}/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=es`
       );
 
       const current = currentResponse.data;
@@ -167,16 +167,16 @@ export const WeatherProvider = ({ children }) => {
 
       // Fetch forecast data
       const forecastResponse = await axios.get(
-        `${BASE_URL}/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+        `${BASE_URL}/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=es`
       );
 
       const forecast = forecastResponse.data;
       
       // Process hourly and daily as above
       const hourlyData = forecast.list.slice(0, 8).map((item) => ({
-        time: new Date(item.dt * 1000).toLocaleTimeString('en-US', { 
-          hour: 'numeric', 
-          hour12: true 
+        time: new Date(item.dt * 1000).toLocaleTimeString('es-ES', {
+          hour: 'numeric',
+          hour12: true
         }),
         temperature: Math.round(item.main.temp),
         icon: item.weather[0].icon,
@@ -204,7 +204,7 @@ export const WeatherProvider = ({ children }) => {
 
         dailyData.push({
           date,
-          day: new Date(date).toLocaleDateString('en-US', { weekday: 'short' }),
+          day: new Date(date).toLocaleDateString('es-ES', { weekday: 'short' }),
           highTemp,
           lowTemp,
           icon: mainWeather.icon,
@@ -217,7 +217,7 @@ export const WeatherProvider = ({ children }) => {
     } catch (error) {
       dispatch({ 
         type: 'SET_ERROR', 
-        payload: error.response?.data?.message || 'Failed to fetch weather data' 
+        payload: error.response?.data?.message || 'No se pudieron obtener los datos del clima'
       });
     } finally {
       dispatch({ type: 'SET_LOADING', payload: false });
@@ -243,7 +243,7 @@ export const WeatherProvider = ({ children }) => {
 export const useWeather = () => {
   const context = useContext(WeatherContext);
   if (context === undefined) {
-    throw new Error('useWeather must be used within a WeatherProvider');
+    throw new Error('useWeather debe utilizarse dentro de un WeatherProvider');
   }
   return context;
 };
