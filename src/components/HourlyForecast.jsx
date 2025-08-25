@@ -10,15 +10,15 @@ const HourlyForecast = () => {
   if (state.hourlyForecast.length === 0) {
     return (
       <div className="card">
-        <h3 className="text-lg font-semibold mb-4">24-Hour Forecast</h3>
-        <p>Loading...</p>
+        <h3 className="text-lg font-semibold mb-4">Pronóstico de 24 horas</h3>
+        <p>Cargando...</p>
       </div>
     );
   }
 
   return (
     <div className="card">
-      <h3 className="text-lg font-semibold mb-4">24-Hour Forecast</h3>
+      <h3 className="text-lg font-semibold mb-4">Pronóstico de 24 horas</h3>
 
       <div className="w-full overflow-x-auto">
         <div className="flex gap-4 pb-2">
@@ -28,7 +28,7 @@ const HourlyForecast = () => {
               className="flex flex-col items-center gap-2 min-w-[70px] p-2"
             >
               <div className="text-xs text-gray-500">
-                {index === 0 ? 'Now' : hour.time}
+                {index === 0 ? 'Ahora' : hour.time}
               </div>
 
               <WeatherIcon

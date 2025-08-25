@@ -10,15 +10,15 @@ const DailyForecast = () => {
   if (state.dailyForecast.length === 0) {
     return (
       <div className="card">
-        <h3 className="text-lg font-semibold mb-4">5-Day Forecast</h3>
-        <p>Loading...</p>
+        <h3 className="text-lg font-semibold mb-4">Pronóstico de 5 días</h3>
+        <p>Cargando...</p>
       </div>
     );
   }
 
   return (
     <div className="card">
-      <h3 className="text-lg font-semibold mb-4">5-Day Forecast</h3>
+      <h3 className="text-lg font-semibold mb-4">Pronóstico de 5 días</h3>
 
       <div className="space-y-2">
         {state.dailyForecast.map((day, index) => (
@@ -28,7 +28,7 @@ const DailyForecast = () => {
           >
             <div className="flex items-center gap-3 flex-1">
               <div className="text-sm font-medium w-12">
-                {index === 0 ? 'Today' : day.day}
+                {index === 0 ? 'Hoy' : day.day}
               </div>
 
               <WeatherIcon
