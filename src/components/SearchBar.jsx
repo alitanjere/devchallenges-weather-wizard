@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Search, MapPin } from 'lucide-react';
 import { useWeather } from '@/contexts/WeatherContext.jsx';
-import { toast } from 'sonner';
 
 const SearchBar = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -14,15 +13,14 @@ const SearchBar = () => {
     try {
       await fetchWeatherByCity(searchValue.trim());
       setSearchValue('');
-      toast.success(`Weather data loaded for ${searchValue}`);
     } catch (error) {
-      toast.error('City not found');
+      console.error('City not found');
     }
   };
 
   const handleLocationRequest = () => {
     if (!navigator.geolocation) {
-      toast.error('Geolocation is not supported by this browser');
+      console.error('Geolocation is not supported by this browser');
       return;
     }
 
@@ -33,13 +31,12 @@ const SearchBar = () => {
             position.coords.latitude,
             position.coords.longitude
           );
-          toast.success('Current location weather loaded');
         } catch (error) {
-          toast.error('Failed to get weather for current location');
+          console.error('Failed to get weather for current location');
         }
       },
       () => {
-        toast.error('Unable to retrieve your location');
+        console.error('Unable to retrieve your location');
       }
     );
   };
@@ -52,18 +49,18 @@ const SearchBar = () => {
           placeholder="Search city..."
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
-          className="glass pl-10 pr-20 py-3 text-glass-foreground placeholder:text-text-muted border-glass-border/30 focus:border-primary/50 focus:ring-primary/30"
+          className="w-full border rounded pl-10 pr-20 py-2 text-gray-700 placeholder:text-gray-400"
           disabled={state.loading}
         />
 
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-text-muted" />
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
 
-        <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
+        <div className="absolute right-2 top-1/2 -translate-y-1/2 flex gap-1">
           <button
             type="button"
             onClick={handleLocationRequest}
             disabled={state.loading}
-            className="h-8 w-8 p-0 hover:bg-primary/20 text-text-muted hover:text-primary rounded"
+            className="h-8 w-8 p-0 text-gray-600"
           >
             <MapPin className="h-4 w-4" />
           </button>
@@ -71,7 +68,7 @@ const SearchBar = () => {
           <button
             type="submit"
             disabled={state.loading || !searchValue.trim()}
-            className="h-8 w-8 p-0 hover:bg-primary/20 text-text-muted hover:text-primary rounded"
+            className="h-8 w-8 p-0 text-gray-600"
           >
             <Search className="h-4 w-4" />
           </button>
