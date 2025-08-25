@@ -23,7 +23,7 @@ const PopularCities = () => {
       try {
         const API_KEY = '43f53748106c3ae1357cdf647fd41a33';
         const promises = POPULAR_CITIES.map(city =>
-          axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`)
+          axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=es`)
         );
 
         const responses = await Promise.all(promises);

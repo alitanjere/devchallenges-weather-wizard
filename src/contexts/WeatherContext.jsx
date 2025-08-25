@@ -49,7 +49,7 @@ export const WeatherProvider = ({ children }) => {
 
       // Fetch current weather
       const currentResponse = await axios.get(
-        `${BASE_URL}/weather?q=${city}&appid=${API_KEY}&units=metric`
+        `${BASE_URL}/weather?q=${city}&appid=${API_KEY}&units=metric&lang=es`
       );
 
       const current = currentResponse.data;
@@ -76,7 +76,7 @@ export const WeatherProvider = ({ children }) => {
 
       // Fetch 5-day forecast (includes hourly data)
       const forecastResponse = await axios.get(
-        `${BASE_URL}/forecast?q=${city}&appid=${API_KEY}&units=metric`
+        `${BASE_URL}/forecast?q=${city}&appid=${API_KEY}&units=metric&lang=es`
       );
 
       const forecast = forecastResponse.data;
@@ -140,7 +140,7 @@ export const WeatherProvider = ({ children }) => {
       dispatch({ type: 'CLEAR_ERROR' });
 
       const currentResponse = await axios.get(
-        `${BASE_URL}/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+        `${BASE_URL}/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=es`
       );
 
       const current = currentResponse.data;
@@ -167,7 +167,7 @@ export const WeatherProvider = ({ children }) => {
 
       // Fetch forecast data
       const forecastResponse = await axios.get(
-        `${BASE_URL}/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+        `${BASE_URL}/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=es`
       );
 
       const forecast = forecastResponse.data;
