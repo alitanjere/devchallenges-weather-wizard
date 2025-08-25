@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
 import WeatherIcon from './WeatherIcon';
 import { useWeather } from '@/contexts/WeatherContext.jsx';
 import { useSettings } from '@/contexts/SettingsContext.jsx';
 import axios from 'axios';
 
-// Simple city weather object
-
 const POPULAR_CITIES = [
   'New York',
-  'London', 
+  'London',
   'Tokyo',
   'Paris',
   'Sydney'
@@ -28,7 +25,7 @@ const PopularCities = () => {
         const promises = POPULAR_CITIES.map(city =>
           axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`)
         );
-        
+
         const responses = await Promise.all(promises);
         const citiesData = responses.map(response => ({
           name: response.data.name,
@@ -37,7 +34,7 @@ const PopularCities = () => {
           icon: response.data.weather[0].icon,
           description: response.data.weather[0].description,
         }));
-        
+
         setCities(citiesData);
       } catch (error) {
         console.error('Failed to fetch cities weather:', error);
@@ -78,12 +75,11 @@ const PopularCities = () => {
   return (
     <div className="glass glass-hover rounded-2xl p-6 animate-slide-in">
       <h3 className="text-lg font-semibold mb-4">Other Large Cities</h3>
-      
+
       <div className="space-y-2">
         {cities.map((city, index) => (
-          <Button
+          <button
             key={index}
-            variant="ghost"
             onClick={() => handleCityClick(city.name)}
             className="w-full flex items-center justify-between py-3 px-3 hover:bg-white/10 rounded-lg transition-colors text-left h-auto"
           >
@@ -97,17 +93,17 @@ const PopularCities = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="flex items-center gap-3">
-              <WeatherIcon 
-                iconCode={city.icon} 
-                size="sm" 
+              <WeatherIcon
+                iconCode={city.icon}
+                size="sm"
               />
               <span className="text-sm font-medium">
                 {convertTemperature(city.temperature)}{getTemperatureSymbol()}
               </span>
             </div>
-          </Button>
+          </button>
         ))}
       </div>
     </div>

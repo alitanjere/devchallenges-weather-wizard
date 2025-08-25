@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Loader2, AlertCircle } from 'lucide-react';
 import SearchBar from '@/components/SearchBar';
 import TemperatureToggle from '@/components/TemperatureToggle';
 import CurrentWeather from '@/components/CurrentWeather';
@@ -35,7 +33,7 @@ const Index = () => {
               *** ULTIMA ACTUALIZACION: HOY *** GRATIS !!! ***
             </span>
           </marquee>
-          
+
           <div style={{marginTop: '15px', textAlign: 'center'}}>
             <SearchBar />
             <br />

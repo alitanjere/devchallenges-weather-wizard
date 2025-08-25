@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Search, MapPin } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { useWeather } from '@/contexts/WeatherContext.jsx';
 import { toast } from 'sonner';
 
@@ -12,7 +10,7 @@ const SearchBar = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     if (!searchValue.trim()) return;
-    
+
     try {
       await fetchWeatherByCity(searchValue.trim());
       setSearchValue('');
@@ -22,7 +20,7 @@ const SearchBar = () => {
     }
   };
 
-  const handleLocationRequest = async () => {
+  const handleLocationRequest = () => {
     if (!navigator.geolocation) {
       toast.error('Geolocation is not supported by this browser');
       return;
@@ -49,7 +47,7 @@ const SearchBar = () => {
   return (
     <form onSubmit={handleSearch} className="relative w-full max-w-md">
       <div className="relative">
-        <Input
+        <input
           type="text"
           placeholder="Search city..."
           value={searchValue}
@@ -57,30 +55,26 @@ const SearchBar = () => {
           className="glass pl-10 pr-20 py-3 text-glass-foreground placeholder:text-text-muted border-glass-border/30 focus:border-primary/50 focus:ring-primary/30"
           disabled={state.loading}
         />
-        
+
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-text-muted" />
-        
+
         <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
-          <Button
+          <button
             type="button"
-            variant="ghost"
-            size="sm"
             onClick={handleLocationRequest}
             disabled={state.loading}
-            className="h-8 w-8 p-0 hover:bg-primary/20 text-text-muted hover:text-primary"
+            className="h-8 w-8 p-0 hover:bg-primary/20 text-text-muted hover:text-primary rounded"
           >
             <MapPin className="h-4 w-4" />
-          </Button>
-          
-          <Button
+          </button>
+
+          <button
             type="submit"
-            variant="ghost"
-            size="sm"
             disabled={state.loading || !searchValue.trim()}
-            className="h-8 w-8 p-0 hover:bg-primary/20 text-text-muted hover:text-primary"
+            className="h-8 w-8 p-0 hover:bg-primary/20 text-text-muted hover:text-primary rounded"
           >
             <Search className="h-4 w-4" />
-          </Button>
+          </button>
         </div>
       </div>
     </form>
